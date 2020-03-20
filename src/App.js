@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CardBody, CardHeader, Card, CardFooter } from "reactstrap";
+import { CardBody, Card, CardFooter } from "reactstrap";
 
 import DataTable from "./components/DataTable/dataTable";
 import Pagination from "./components/Pagination/pagination";
@@ -15,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageLimit, setPageLimit] = useState(10);
+  const [sortBy, setSortBy] = useState("asc");
 
   useEffect(() => {
     setLoading(true);
@@ -66,20 +67,37 @@ function App() {
     );
   };
 
+  //sort
+  const sort = key => {
+    const items = [...itemsList];
+    let sorted = [];
+    if (sortBy === "desc") {
+      setSortBy("asc");
+      sorted = items.sort((a, b) =>
+        key === "id" ? a[key] > b[key] : a[key].localeCompare(b[key])
+      );
+    } else {
+      setSortBy("desc");
+      sorted = items.sort((a, b) =>
+        key === "id" ? a[key] > b[key] : b[key].localeCompare(a[key])
+      );
+    }
+    setFilteredItems(sorted);
+  };
+
   return (
     <div className="App">
       <Nav />
       <Card>
-        <CardHeader>
-          {" "}
-          <SearchBar onSearch={onSearch} />
-        </CardHeader>
+        <SearchBar onSearch={onSearch} />
         <CardBody>
           <DataTable
             data={currentData}
             loading={loading}
             deleteItem={deleteItem}
             updateItem={updateItem}
+            sort={sort}
+            sortBy={sortBy}
           />
         </CardBody>
         <CardFooter className="d-flex">

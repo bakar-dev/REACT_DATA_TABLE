@@ -1,7 +1,14 @@
 import React, { Fragment, useState } from "react";
 import { Table, Button } from "reactstrap";
 
-export default function DataTable({ data, loading, deleteItem, updateItem }) {
+export default function DataTable({
+  data,
+  loading,
+  deleteItem,
+  updateItem,
+  sort,
+  sortBy
+}) {
   const [contentValues, setContentValues] = useState(null);
 
   //handle editable
@@ -29,15 +36,20 @@ export default function DataTable({ data, loading, deleteItem, updateItem }) {
   if (loading) {
     return <h1>Loading...</h1>;
   }
+
   return (
     <Fragment>
       <Table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Body</th>
-            <th>Actions</th>
+            <th onClick={() => sort("id")}>#</th>
+            <th onClick={() => sort("title")}>
+              <i className="fa fa-sort" /> Title
+            </th>
+            <th onClick={() => sort("body")}>
+              <i className="fa fa-sort" /> Body{" "}
+            </th>
+            <th>Actions </th>
           </tr>
         </thead>
         <tbody>

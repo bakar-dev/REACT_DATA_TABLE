@@ -53,7 +53,7 @@ export default function Pagination({
 
   return (
     <Fragment>
-      <div className="pagination mr-auto selectable">
+      <div className="pagination mr-auto mt-auto selectable">
         <span
           className={firstPageButtonClassName}
           onClick={() => onPageChange(1)}

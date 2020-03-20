@@ -1,0 +1,13 @@
+.searchContainer {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.searchInput {
+  outline: 0 none;
+  padding: 5px;
+  float: right;
+  border: none;
+  margin-top: 8px;
+  font-size: large;
+}

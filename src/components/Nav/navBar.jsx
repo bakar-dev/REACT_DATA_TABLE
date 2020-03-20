@@ -23,7 +23,7 @@ const NavBar = props => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
+              <NavLink href="https://github.com/bakar-dev/REACT_DATA_TABLE">
                 GitHub
               </NavLink>
             </NavItem>

@@ -1,11 +1,15 @@
 import React, { Fragment } from "react";
-import { Input } from "reactstrap";
+import "./searchBar.css";
 
 const SearchBar = ({ onSearch }) => {
   return (
-    <Fragment>
-      <Input placeholder="Search here" onChange={onSearch} />
-    </Fragment>
+    <div className="searchContainer">
+      <input
+        className="searchInput"
+        placeholder="Search here..."
+        onChange={onSearch}
+      />
+    </div>
   );
 };
 
